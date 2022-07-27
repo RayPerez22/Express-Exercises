@@ -20,10 +20,16 @@ app.get('/greeting',(req,res) => {
 })
 
 app.get('/greeting/:name',(req,res) => {
-    res.send("What's up" + req.params.name)
+    res.send("What's up, " + req.params.name)
 })
 
 
+app.get('/tip/:total/:percentage',(req,res) => {
+    let tip = req.params.total*(req.params.percentage/100)
+    res.render('tip',{
+       title:'tip', message: 'The total is ' + req.params.total +', and tabulated tip is ' + tip
+    })
+})
 
 app.listen(3000, () => {
     console.log("I am listening on port")
