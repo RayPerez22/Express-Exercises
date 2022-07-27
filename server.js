@@ -15,6 +15,7 @@ app.engine('hypatia', (filePath, options, callback) => { // define the view engi
 app.set('views', './views') // specify the views directory
 app.set('view engine', 'hypatia') // register the hypatia view engine
 
+
 app.get('/greeting',(req,res) => {
     res.send('Hello, stranger')
 })
@@ -30,6 +31,19 @@ app.get('/tip/:total/:percentage',(req,res) => {
        title:'tip', message: 'The total is ' + req.params.total +', and tabulated tip is ' + tip
     })
 })
+const responses = ["It is certain", "It is decidedly so", "Without a doubt", "Yes definitely","You may rely on it", "As I see it yes", "Most likely", "Outlook good","Yes", "Signs point to yes", "Reply hazy try again", "Ask again later","Better not tell you now", "Cannot predict now", "Concentrate and ask again","Don't count on it", "My reply is no", "My sources say no","Outlook not so good", "Very doubtful"]
+
+app.get ('/magic/:question',(req,res) => {
+    const response = responses[Math.floor(Math.random() * responses.length)]
+       
+     res.render('magic', { title: 'Magic', message: response})
+ })
+ 
+// app.get('/magic/:questions',(req,res) => {
+//     const response = responses[Math.floor(Math.random() * responses.length)]
+    
+//     res.render('magic', {title:'Magic', message: response})
+// })
 
 app.listen(3000, () => {
     console.log("I am listening on port")

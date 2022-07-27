@@ -2,6 +2,5 @@
 #title#
 </head>
 <body>
-<header>#name#</header>
-#content#
+<h1>#message#</h1>
 </body>
